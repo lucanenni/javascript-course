@@ -1,0 +1,90 @@
+:root {
+            --bg-primary: #fafaf9;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f5f5f4;
+            --border-color: #e7e5e4;
+            --text-primary: #1c1917;
+            --text-secondary: #57534e;
+            --code-bg: #f8fafc;
+            --accent: #10b981;        /* solo sfondi / elementi grandi */
+            --accent-strong: #059669; /* hover */
+            --accent-text: #047857;   /* testo e link su sfondo chiaro: contrasto AA */
+            --ok: #059669;
+            --err: #dc2626;
+        }
+        .dark {
+            --bg-primary: #0c0c0c;
+            --bg-secondary: #171717;
+            --bg-tertiary: #202020;
+            --border-color: #2a2a2a;
+            --text-primary: #e5e5e5;
+            --text-secondary: #a3a3a3;
+            --code-bg: #1e1e1e;
+            --accent: #10b981;
+            --accent-strong: #34d399;
+            --accent-text: #34d399;
+            --ok: #34d399;
+            --err: #f87171;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a { color: var(--accent-text); }
+
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+        :focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; border-radius: 4px; }
+
+        .CodeMirror {
+            height: auto !important;
+            min-height: 160px;
+            max-height: 460px;
+            font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace !important;
+            font-size: 14px;
+        }
+        html:not(.dark) .CodeMirror { background: var(--code-bg) !important; color: #1c1917 !important; }
+        html.dark .CodeMirror { background: #1e1e1e !important; color: #e5e5e5 !important; }
+        html:not(.dark) .CodeMirror-gutters { background: var(--code-bg) !important; border-right: 1px solid var(--border-color) !important; }
+        html.dark .CodeMirror-gutters { background: #1a1a1a !important; border-right: 1px solid #333 !important; }
+
+        @keyframes scaleIn { 0% { transform: scale(0.6); opacity: 0; } 60% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); } }
+        .animate-scaleIn { animation: scaleIn 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.35s ease-out forwards; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+        }
+
+        .toc-link {
+            padding-left: 0.9rem;
+            border-left: 2px solid transparent;
+            transition: all 0.15s ease;
+            display: block;
+            padding-top: 0.2rem;
+            padding-bottom: 0.2rem;
+        }
+        .toc-link.active { border-left-color: var(--accent); color: var(--accent-text); font-weight: 600; }
+
+        .prose-content p { margin-bottom: 1.15rem; line-height: 1.75; }
+        .prose-content h2 { font-size: 1.55rem; font-weight: 600; margin-top: 2.4rem; margin-bottom: 1rem; scroll-margin-top: 90px; }
+        .prose-content h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.7rem; margin-bottom: 0.7rem; scroll-margin-top: 90px; }
+        .prose-content ul, .prose-content ol { margin-bottom: 1.15rem; padding-left: 1.4rem; }
+        .prose-content ul { list-style-type: disc; }
+        .prose-content ol { list-style-type: decimal; }
+        .prose-content li { margin-bottom: 0.4rem; }
+        .prose-content code:not(pre code) {
+            font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            background: var(--bg-tertiary);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+        }
+        .prose-content strong { font-weight: 600; }

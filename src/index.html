@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Corso interattivo di JavaScript da zero: impara a programmare scrivendo codice vero nel browser, con esercizi verificati automaticamente.">
+    <title>JavaScript da Zero - Corso Interattivo</title>
+
+    <!-- Evita il flash di tema chiaro al caricamento -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('jsc:theme');
+                if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                if (t === 'dark') document.documentElement.classList.add('dark');
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Font, CSS e JS sono tutti inlineati qui sotto dal build: nessuna risorsa esterna. -->
+    <style>/*__CSS__*/</style>
+</head>
+<body class="font-sans antialiased">
+    <div id="root" data-loading="1">
+        <div style="max-width:640px;margin:80px auto;padding:24px;font-family:system-ui;line-height:1.6;text-align:center">
+            <p>Caricamento del corso…</p>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('error', function (e) {
+            var r = document.getElementById('root');
+            if (r && r.getAttribute('data-loading')) {
+                r.innerHTML = '<div style="max-width:640px;margin:80px auto;padding:24px;font-family:system-ui;line-height:1.6">' +
+                    '<h1 style="font-size:1.4rem">Errore nel caricamento del corso</h1>' +
+                    '<p>Ricarica la pagina. Se il problema resta, apri la console del browser per il dettaglio.</p>' +
+                    '<pre style="white-space:pre-wrap;font-size:12px;background:#f3f4f6;padding:12px;border-radius:6px">' +
+                    String(e && e.message || e) + '</pre></div>';
+            }
+        });
+    </script>
+
+    <script>//__APP__</script>
+    <script>try { document.getElementById('root').removeAttribute('data-loading'); } catch (e) {}</script>
+</body>
+</html>
