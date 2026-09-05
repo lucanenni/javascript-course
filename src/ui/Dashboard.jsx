@@ -11,77 +11,87 @@ const Dashboard = ({ onNavigate, progress }) => {
     const firstTodo = COURSE_DATA.find(c => !completed.includes(c.id)) || COURSE_DATA[0];
 
     return (
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 animate-fadeIn">
-            <div className="rounded-2xl p-8 md:p-12 mb-12 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}>
-                <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full mb-4"
-                      style={{ color: 'var(--accent-text)', background: 'var(--accent)' + '1a' }}>Corso interattivo</span>
-                <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">JavaScript da Zero</h1>
-                <p className="text-lg mb-8 max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
-                    Dieci capitoli per imparare a programmare partendo da zero. Scrivi codice vero fin dalla prima pagina,
-                    con esercizi corretti automaticamente. Niente da installare, il tuo progresso resta su questo browser.
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 animate-fadeIn">
+
+            {/* Hero */}
+            <header className="mb-16">
+                <div className="eyebrow mb-7">Corso interattivo · JavaScript</div>
+
+                <h1 className="font-sans font-bold tracking-[-0.04em] leading-[0.9] mb-5"
+                    style={{ fontSize: 'clamp(3rem, 9vw, 5.5rem)' }}>
+                    JavaScript<br /><span className="font-serif italic font-normal" style={{ color: 'var(--accent)' }}>da zero</span>
+                </h1>
+
+                <p className="font-serif italic mb-8 max-w-xl leading-snug" style={{ fontSize: 'clamp(1.15rem, 2.4vw, 1.6rem)', color: 'var(--ink-2)' }}>
+                    Dieci capitoli per imparare a programmare — scrivendo codice vero
+                    dalla prima pagina, con esercizi corretti sul momento.
                 </p>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-6">
-                    <div className="w-full sm:w-1/2">
-                        <div className="flex justify-between text-xs mb-2 font-medium" style={{ color: 'var(--text-secondary)' }}>
-                            <span>Avanzamento</span><span>{completed.length} / {total} capitoli</span>
+
+                <div className="flex flex-wrap gap-3 mb-10">
+                    <span className="pill"><span className="dot"></span>{total} capitoli</span>
+                    <span className="pill accent"><span className="dot"></span>esercizi verificati</span>
+                    <span className="pill"><span className="dot"></span>offline · nessuna installazione</span>
+                </div>
+
+                <div className="frame p-6 md:p-8">
+                    <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+                        <div className="w-full sm:max-w-xs">
+                            <div className="flex justify-between font-mono text-[11px] uppercase tracking-[0.1em] mb-2" style={{ color: 'var(--text-secondary)' }}>
+                                <span>Avanzamento</span><span>{String(completed.length).padStart(2, '0')} / {total}</span>
+                            </div>
+                            <div className="relative w-full" style={{ height: '4px', background: 'var(--border-color)' }}>
+                                <div className="absolute inset-y-0 left-0 transition-all duration-500" style={{ width: percent + '%', background: 'var(--accent)' }}></div>
+                            </div>
                         </div>
-                        <div className="w-full h-2.5 rounded-full overflow-hidden" style={{ background: 'var(--bg-tertiary)' }}>
-                            <div className="h-full transition-all duration-500" style={{ width: percent + '%', background: 'var(--accent)' }}></div>
-                        </div>
-                    </div>
-                    <div className="flex gap-3">
-                        <button onClick={() => onNavigate('chapter', firstTodo.id)}
-                                className="px-6 py-3 text-white rounded-lg font-medium hover:opacity-90 transition flex items-center"
-                                style={{ background: 'var(--accent)' }}>
-                            {percent > 0 ? 'Riprendi' : 'Inizia ora'} <Icon name="arrow" className="w-4 h-4 ml-2" />
-                        </button>
-                        {percent > 0 && (
-                            confirmReset ? (
-                                <div className="flex items-center gap-2 text-sm">
+                        <div className="flex gap-3">
+                            <button onClick={() => onNavigate('chapter', firstTodo.id)} className="btn-solid">
+                                {percent > 0 ? 'Riprendi' : 'Inizia'} <Icon name="arrow" className="w-3.5 h-3.5" />
+                            </button>
+                            {percent > 0 && (confirmReset ? (
+                                <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.08em]">
                                     <span style={{ color: 'var(--text-secondary)' }}>Azzerare?</span>
-                                    <button onClick={() => { resetProgress(); setConfirmReset(false); }}
-                                            className="px-3 py-1 rounded-md text-white" style={{ background: 'var(--err)' }}>Sì</button>
-                                    <button onClick={() => setConfirmReset(false)}
-                                            className="px-3 py-1 rounded-md border" style={{ borderColor: 'var(--border-color)' }}>No</button>
+                                    <button onClick={() => { resetProgress(); setConfirmReset(false); }} className="btn-line" style={{ padding: '6px 10px', borderColor: 'var(--err)', color: 'var(--err)' }}>Sì</button>
+                                    <button onClick={() => setConfirmReset(false)} className="btn-line" style={{ padding: '6px 10px' }}>No</button>
                                 </div>
                             ) : (
-                                <button onClick={() => setConfirmReset(true)} title="Azzera i progressi"
-                                        className="px-4 py-3 border rounded-lg font-medium hover:opacity-80 transition"
-                                        style={{ borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}>
+                                <button onClick={() => setConfirmReset(true)} title="Azzera i progressi" className="btn-line" style={{ padding: '9px 11px' }}>
                                     <Icon name="reset" className="w-4 h-4" />
                                 </button>
-                            )
-                        )}
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </header>
 
-            <h2 className="text-2xl font-bold tracking-tight mb-6">Programma del corso</h2>
-            <div className="space-y-3">
+            {/* Programma */}
+            <div className="eyebrow mb-6">Il programma</div>
+            <ol className="border-t" style={{ borderColor: 'var(--border-strong)' }}>
                 {COURSE_DATA.map((ch) => {
                     const done = completed.includes(ch.id);
                     return (
-                        <button key={ch.id} onClick={() => onNavigate('chapter', ch.id)}
-                                className="w-full text-left border rounded-xl p-5 flex items-center transition-all hover:opacity-90"
-                                style={{ background: 'var(--bg-secondary)', borderColor: done ? 'var(--accent)' : 'var(--border-color)' }}>
-                            <div className="w-11 h-11 rounded-full flex items-center justify-center mr-4 font-bold text-sm flex-shrink-0"
-                                 style={done
-                                    ? { background: 'var(--accent)', color: '#fff' }
-                                    : { background: 'var(--bg-tertiary)', color: 'var(--text-secondary)' }}>
-                                {done ? <Icon name="check" className="w-5 h-5" /> : ch.id}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <span className="text-xs uppercase tracking-wider font-medium" style={{ color: 'var(--text-secondary)' }}>
-                                    {ch.id === 0 ? 'Introduzione' : 'Capitolo ' + ch.id}
+                        <li key={ch.id}>
+                            <button onClick={() => onNavigate('chapter', ch.id)}
+                                    className="group w-full text-left flex items-center gap-5 py-5 border-b transition-colors"
+                                    style={{ borderColor: 'var(--border-color)' }}
+                                    onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bg-tertiary)'}
+                                    onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}>
+                                <span className="font-mono text-[13px] tabular-nums pl-1 w-10 flex-none"
+                                      style={{ color: done ? 'var(--accent-text)' : 'var(--text-faint)' }}>
+                                    {String(ch.id).padStart(2, '0')}
                                 </span>
-                                <h3 className="text-lg font-semibold truncate">{ch.title}</h3>
-                                <p className="text-sm truncate" style={{ color: 'var(--text-secondary)' }}>{ch.short}</p>
-                            </div>
-                            <Icon name="arrow" className="w-5 h-5 ml-4 hidden sm:block" style={{ color: 'var(--text-secondary)' }} />
-                        </button>
+                                <span className="flex-none w-6 flex items-center justify-center" style={{ color: 'var(--accent)' }}>
+                                    {done && <Icon name="check" className="w-4 h-4" />}
+                                </span>
+                                <span className="flex-1 min-w-0">
+                                    <span className="block font-sans font-medium text-[1.05rem] truncate" style={{ color: 'var(--text-primary)' }}>{ch.title}</span>
+                                    <span className="block font-serif text-sm truncate" style={{ color: 'var(--text-secondary)' }}>{ch.short}</span>
+                                </span>
+                                <Icon name="arrow" className="w-4 h-4 flex-none mr-1 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--accent-text)' }} />
+                            </button>
+                        </li>
                     );
                 })}
-            </div>
+            </ol>
         </div>
     );
 };

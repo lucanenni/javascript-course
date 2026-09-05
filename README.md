@@ -81,10 +81,22 @@ solo.
 
 Dopo ogni modifica: `npm run build` (o tienilo aperto con `npm run dev`).
 
+## Aspetto
+
+Estetica "field guide" incisa: fondo carta (parchment), inchiostro blu notte,
+accenti ruggine e verde, reticolo millimetrato di sfondo, nessun angolo
+arrotondato. Tema chiaro di default; il tema scuro è la variante "blueprint
+notturno" (toggle in alto a destra, rispetta `prefers-color-scheme`).
+
+I token (colori, radius) stanno in `src/custom.css` (`:root` e `.dark`); i
+caratteri in `tailwind.config.js` + `src/fonts.css`. Primitivi riutilizzabili
+in `custom.css`: `.eyebrow`, `.pill`, `.frame` (cornice con squadrette),
+`.btn-line` / `.btn-solid`.
+
 ## Note tecniche
 
-- React 18.3.1, ReactDOM e CodeMirror 5 sono **impacchettati** nel file (~640 KB).
-- Font: variable font (Inter / Lora / JetBrains Mono), solo subset latino,
-  inlineati come data-URI.
+- React 18.3.1, ReactDOM e CodeMirror 5 sono **impacchettati** nel file (~670 KB).
+- Font: variable font **Space Grotesk** (display/UI) · **Newsreader** (prosa serif)
+  · **JetBrains Mono** (codice/etichette), solo subset latino, inlineati come data-URI.
 - Il codice dello studente gira in un `<iframe sandbox="allow-scripts">` usa e
   getta, con watchdog di 2 s lato pagina contro i cicli infiniti.

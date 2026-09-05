@@ -27,8 +27,9 @@ const App = () => {
                             : <Dashboard onNavigate={navigate} progress={progress} />}
                     </ErrorBoundary>
                 </main>
-                <footer className="border-t mt-16 py-8 text-center text-sm" style={{ borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}>
-                    <p>JavaScript da Zero &middot; {new Date().getFullYear()} &middot; Il tuo progresso è salvato solo su questo browser.</p>
+                <footer className="border-t mt-20 py-10 text-center font-mono text-[10.5px] uppercase tracking-[0.14em]"
+                        style={{ borderColor: 'var(--border-strong)', color: 'var(--text-secondary)' }}>
+                    <p>JavaScript da Zero &nbsp;·&nbsp; {new Date().getFullYear()} &nbsp;·&nbsp; progresso salvato solo su questo browser</p>
                 </footer>
             </div>
         </ThemeProvider>

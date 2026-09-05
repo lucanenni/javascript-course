@@ -1,31 +1,35 @@
 /* Font vendorizzati: solo subset "latin" dei variable font.
    esbuild li inlina come data-URI nel bundle finale (loader woff2 -> dataurl),
-   quindi nessuna richiesta di rete a runtime. */
+   quindi nessuna richiesta di rete a runtime.
+
+   Space Grotesk -> display / UI (titoli, nav, bottoni)
+   Newsreader    -> prosa (serif da lettura, + corsivo)
+   JetBrains Mono -> codice, etichette, metadati */
 
 @font-face {
-  font-family: 'Inter Variable';
+  font-family: 'Space Grotesk Variable';
   font-style: normal;
   font-display: swap;
-  font-weight: 100 900;
-  src: url('../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2-variations');
+  font-weight: 300 700;
+  src: url('../node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2') format('woff2-variations');
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 
 @font-face {
-  font-family: 'Lora Variable';
+  font-family: 'Newsreader Variable';
   font-style: normal;
   font-display: swap;
-  font-weight: 400 700;
-  src: url('../node_modules/@fontsource-variable/lora/files/lora-latin-wght-normal.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  src: url('../node_modules/@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2') format('woff2-variations');
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 
 @font-face {
-  font-family: 'Lora Variable';
+  font-family: 'Newsreader Variable';
   font-style: italic;
   font-display: swap;
-  font-weight: 400 700;
-  src: url('../node_modules/@fontsource-variable/lora/files/lora-latin-wght-italic.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  src: url('../node_modules/@fontsource-variable/newsreader/files/newsreader-latin-wght-italic.woff2') format('woff2-variations');
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 

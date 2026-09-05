@@ -1,27 +1,24 @@
 import React from 'react';
-import { Icon } from './Icon.jsx';
 
 const CALLOUT = {
-    info:    { c: '#3b82f6', icon: 'info', label: 'Nota' },
-    tip:     { c: '#10b981', icon: 'bulb', label: 'Consiglio' },
-    warning: { c: '#f59e0b', icon: 'warn', label: 'Attenzione' },
-    analogy: { c: '#8b5cf6', icon: 'book', label: 'Analogia' }
+    info:    { c: 'var(--ink-2)',       label: 'Nota' },
+    tip:     { c: 'var(--ok-bright)',   label: 'Consiglio' },
+    warning: { c: 'var(--accent)',      label: 'Attenzione' },
+    analogy: { c: 'var(--accent-text)', label: 'Analogia' }
 };
+
 const Callout = ({ variant = 'info', title, html }) => {
     const s = CALLOUT[variant] || CALLOUT.info;
     return (
-        <div className="my-6 rounded-xl border p-4 flex gap-3"
-             style={{ borderColor: 'var(--border-color)', background: s.c + '14' }}>
-            <div className="flex-shrink-0 mt-0.5" style={{ color: s.c }}>
-                <Icon name={s.icon} className="w-5 h-5" />
-            </div>
-            <div className="min-w-0">
-                <div className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: s.c }}>
+        <div className="my-7 border p-5" style={{ borderColor: 'var(--border-strong)', background: 'var(--bg-secondary)' }}>
+            <div className="flex items-center gap-2.5 mb-2.5">
+                <span style={{ width: 9, height: 9, background: s.c, flex: 'none' }}></span>
+                <span className="font-sans text-[10.5px] font-semibold uppercase tracking-[0.16em]" style={{ color: s.c }}>
                     {title || s.label}
-                </div>
-                <div className="text-sm leading-relaxed" style={{ color: 'var(--text-primary)' }}
-                     dangerouslySetInnerHTML={{ __html: html }} />
+                </span>
             </div>
+            <div className="font-serif text-[0.98rem] leading-relaxed" style={{ color: 'var(--text-primary)' }}
+                 dangerouslySetInnerHTML={{ __html: html }} />
         </div>
     );
 };
