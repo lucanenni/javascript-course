@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
-        serif: ['Lora Variable', 'Lora', 'Georgia', 'serif'],
+        sans: ['Space Grotesk Variable', 'Space Grotesk', 'system-ui', 'sans-serif'],
+        serif: ['Newsreader Variable', 'Newsreader', 'Georgia', 'serif'],
         mono: ['JetBrains Mono Variable', 'JetBrains Mono', 'ui-monospace', 'monospace'],
       },
     },
