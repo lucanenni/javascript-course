@@ -1,5 +1,5 @@
 /**
- * Build: sorgenti in src/ -> UN unico file CorsoJS.html, autonomo.
+ * Build: sorgenti in src/ -> UN unico file index.html, autonomo.
  *
  *   node build.mjs           build una tantum
  *   node build.mjs --watch   ricostruisce a ogni modifica + server con live-reload
@@ -16,7 +16,7 @@ import http from 'node:http';
 import { parseChapter } from './src/content/parse.mjs';
 import { EXERCISES } from './src/content/exercises.js';
 
-const OUT = 'CorsoJS.html';
+const OUT = 'index.html';
 const TMP = '.build';
 const WATCH = process.argv.includes('--watch');
 mkdirSync(TMP, { recursive: true });

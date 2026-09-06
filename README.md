@@ -1,23 +1,29 @@
 # JavaScript da Zero
 
+### 👉 [**lucanenni.github.io/javascript-course**](https://lucanenni.github.io/javascript-course/)
+
 Corso interattivo di JavaScript in una singola pagina. 10 capitoli, playground
 eseguiti in una sandbox `<iframe>`, esercizi verificati automaticamente,
 progressi salvati in `localStorage`, routing per capitoli linkabili.
 
 ## Come si usa il corso
 
-Apri **`CorsoJS.html`** in un browser. È un **file unico e autonomo**: font, CSS
-e JavaScript sono tutti inlineati, **nessuna risorsa esterna**, funziona offline e
-da `file://`.
+Online: **https://lucanenni.github.io/javascript-course/**
+
+Offline: apri **`index.html`** (alla radice del repo) in un browser. È un **file
+unico e autonomo** — font, CSS e JavaScript tutti inlineati, **nessuna risorsa
+esterna**, funziona anche da `file://`.
 
 ## Sviluppo
 
-`CorsoJS.html` è **generato**: si modificano i sorgenti in `src/` e si ricompila.
+`index.html` (radice) è **generato**: si modificano i sorgenti in `src/` e si
+ricompila. Il push su `main` ripubblica il sito via GitHub Actions
+(`.github/workflows/pages.yml`).
 
 ```bash
 npm install
 npm test      # self-test degli esercizi
-npm run build # genera CorsoJS.html  (esegue prima npm test)
+npm run build # genera ./index.html  (esegue prima npm test)
 npm run dev   # watch + server con live-reload su http://localhost:5173
 ```
 
@@ -46,8 +52,9 @@ src/
     ch00.md … ch09.md  PROSA dei capitoli, in Markdown.
     exercises.js       Esercizi: initialCode, checks, hint, solution.
     parse.mjs          Markdown -> blocchi (usato solo a build time).
-build.mjs              Tailwind CLI + esbuild -> CorsoJS.html.
+build.mjs              Tailwind CLI + esbuild -> ./index.html.
 test/exercises.mjs     Verifica che ogni solution superi i checks e initialCode no.
+.github/workflows/pages.yml   Build + deploy su GitHub Pages a ogni push su main.
 ```
 
 ### Scrivere i contenuti
