@@ -93,6 +93,8 @@ caratteri in `tailwind.config.js` + `src/fonts.css`. Primitivi riutilizzabili
 in `custom.css`: `.eyebrow`, `.pill`, `.frame` (cornice con squadrette),
 `.btn-line` / `.btn-solid`.
 
+**Guida completa allo stile (per riusarlo altrove): [`docs/STYLE.md`](docs/STYLE.md).**
+
 ## Note tecniche
 
 - React 18.3.1, ReactDOM e CodeMirror 5 sono **impacchettati** nel file (~670 KB).
